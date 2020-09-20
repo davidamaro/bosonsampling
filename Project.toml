@@ -1,0 +1,10 @@
+name = "BosonSampling"
+uuid = "ede64b7e-1611-462e-b6a2-e80f9d77add9"
+authors = ["David Amaro Alcalá <dav1494@ciencias.unam.mx>"]
+version = "0.1.0"
+
+[deps]
+Immanants = "ebcaf6b6-efbf-4b51-b8f1-dae9a5f52dfa"
+IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
