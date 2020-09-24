@@ -7,6 +7,7 @@ import StatsBase: sample, Weights
 import IterTools: subsets
 # EXPORTS
 export bosonsampling, per, Haar
+export generadistribucion
 
 function per(a::Array{Float64,2})
     _,n::Int64 = size(a)
@@ -70,6 +71,47 @@ function bosonsampling(mat::Array{Complex{Float64},2},m::Int64)
         push!(lista, sample(1:n, proba |> Weights))
     end
     lista
+end
+
+#function estimadorP(mat::Array{Complex{Float64},2}, n::Int64, input::Array{Int64,1}, filas::Array{Int64,1})
+#    @assert length(input) == length(filas)
+#    tmp = mat[input, filas]
+#    total::Float64 = 0.0
+#    prod::Float64 = 1.0
+#    for i in 1:n
+#        total = 0.0
+#        for j in 1:n
+#            total += abs(tmp[i,j])^2
+#        end
+#        prod *= total
+#    end
+#    prod
+#end
+function estimadorP(mat::Array{Complex{Float64},2}, n::Int64, filas::Array{Int64,1})
+    tmp = mat[filas, 1:n]
+    total::Float64 = 0.0
+    prod::Float64 = 1.0
+    for i in 1:n
+        total = 0.0
+        for j in 1:n
+            total += abs(tmp[i,j])^2
+        end
+        prod *= total
+    end
+    prod    
+end
+
+function generadistribucion(mat::Array{Complex{Float64},2})
+    _, n::Int64 = size(mat)
+    @assert n == 9
+    lista::Array{Array{Int,1},1} = Array{Int,1}[]
+    proba::Array{Float64,1} = Float64[]
+    for i in 1:9, j in 1:9, k in 1:9
+        pp = abs( per( mat[[i,j,k], 1:3] ) )^2
+        push!(proba, pp/(*(factorial.([i,j,k])...)))
+        push!(lista, [i,j,k])
+    end
+    lista, proba
 end
 
 end # module
