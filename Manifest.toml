@@ -47,7 +47,7 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 deps = ["AbstractAlgebra", "Combinatorics", "LinearAlgebra", "Test"]
 git-tree-sha1 = "7a0857df35d7c71aa5c9bf1f9b46862da696f542"
 repo-rev = "master"
-repo-url = "../Immanants"
+repo-url = "https://github.com/davidamaro/Immanants.jl"
 uuid = "ebcaf6b6-efbf-4b51-b8f1-dae9a5f52dfa"
 version = "0.1.0"
 
